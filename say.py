@@ -19,22 +19,22 @@ if len(sys.argv) < 2:
 
 
 with open("vocabulary.json") as f:
-	words = json.loads( f.readline() )
+	vocabulary = json.loads( f.readline() )
 
 
-sentence_words = sys.argv[1:]
+words = sys.argv[1:]
 
 command_string = "play "
 
 words_available   = []
 words_unavailable = []
 
-for sentence_word in sentence_words:
-	if sentence_word in words.keys():
-		words_available.append(sentence_word)
-		command_string += "d/" + words[sentence_word] + ".wav "
+for word in words:
+	if word in vocabulary.keys():
+		words_available.append(word)
+		command_string += "d/" + vocabulary[word] + ".wav "
 	else:
-		words_unavailable.append(sentence_word)
+		words_unavailable.append(word)
 
 print ("words_available   = " + str(words_available  ))
 print ("words_unavailable = " + str(words_unavailable))
