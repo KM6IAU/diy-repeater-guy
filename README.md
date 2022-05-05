@@ -5,14 +5,18 @@ controller (and perhaps other SCOM repeater controllers).  The voice is that
 of professional voiceover talent, [Sean Caldwell](https://www.seancaldwell.com/).
 
 ## Prerequisites
-### python3
-### wget
-### sox
+### debian-based linux
+`sudo apt update`  
+`sudo apt install python3 wget sox`  
+
+### windows-based windows
+You'll figure it out.  
 
 ## Setup
 `git clone https://github.com/KM6IAU/diy-repeater-guy.git`  
 `cd diy-repeater-guy`  
-`python3 fetch_and_extract.py`  
+`python3 fetch_and_extract.py`
+
 
 ## Usage
 Still being developed, but [vocabulary.json](https://github.com/KM6IAU/diy-repeater-guy/blob/main/vocabulary.json) is a JSON dict based on the
