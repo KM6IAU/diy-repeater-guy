@@ -1,1 +1,19 @@
-# diy-repeater-guy
+# DIY Repeater Guy
+This project, while perhaps not so aptly named, establishes a framework and
+toolkit to construct phrases based on the voice used on the S-COM 7330 repeater
+controller (and perhaps other SCOM repeater controllers).  The voice is that
+of professional voiceover talent, [Sean Caldwell](https://www.seancaldwell.com/).
+
+## Prerequisites
+### python3
+### wget
+### sox
+
+## Setup
+`git clone https://github.com/KM6IAU/diy-repeater-guy.git`
+`cd /diy-repeater-guy`
+`python3 fetch_and_extract.py`
+
+## Usage
+Still being developed, but `vocabulary.json` is a JSON dict based on the
+vocabulary tables beginning on page 471 of the [S-COM 7330 User Manual](http://www.scomcontrollers.com/downloads/7330_UserMan_V1.8.pdf).
