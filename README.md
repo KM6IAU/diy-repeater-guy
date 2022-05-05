@@ -15,5 +15,5 @@ of professional voiceover talent, [Sean Caldwell](https://www.seancaldwell.com/)
 `python3 fetch_and_extract.py`
 
 ## Usage
-Still being developed, but `vocabulary.json` is a JSON dict based on the
+Still being developed, but [vocabulary.json](https://github.com/KM6IAU/diy-repeater-guy/blob/main/vocabulary.json) is a JSON dict based on the
 vocabulary tables beginning on page 471 of the [S-COM 7330 User Manual](http://www.scomcontrollers.com/downloads/7330_UserMan_V1.8.pdf).
