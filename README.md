@@ -18,6 +18,10 @@ You'll figure it out.
 `python3 fetch_and_extract.py`
 
 
-## Usage
-Still being developed, but [vocabulary.json](https://github.com/KM6IAU/diy-repeater-guy/blob/main/vocabulary.json) is a JSON dict based on the
+## Usage example
+Say "this is a test":  
+`python3 say.py this is a test`  
+
+## Notes
+[vocabulary.json](https://github.com/KM6IAU/diy-repeater-guy/blob/main/vocabulary.json) is a JSON dict based on the
 vocabulary tables beginning on page 471 of the [S-COM 7330 User Manual](http://www.scomcontrollers.com/downloads/7330_UserMan_V1.8.pdf).
