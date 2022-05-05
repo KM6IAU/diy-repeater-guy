@@ -10,7 +10,10 @@
 # 	sox
 ################################################################################
 
-source_binary_url = "http://www.scomcontrollers.com/downloads/SpLibEng_1.3.bin"
+source_binary_url  = "http://www.scomcontrollers.com/downloads/SpLibEng_1.3.bin"
+subdir_companded   = "c"
+subdir_decompanded = "d"
+
 
 
 
@@ -31,25 +34,25 @@ if not os.path.exists("speech_library.bin"):
 #===============================================================================
 # now, let's have a look at that address table inside said binary...
 #===============================================================================
-def get_block(position_begin:int, position_end:int):
+def get_block_at(address_begin:int, address_end:int):
 	with open("speech_library.bin", "rb") as source_file:
-		source_file.seek(position_begin)
-		return bytearray(source_file.read(position_end - position_begin))
+		source_file.seek(address_begin)
+		return bytearray(source_file.read(address_end - address_begin))
 
-def get_addr(position:int):
-	return int.from_bytes(get_block(position, position + 3), "big")
+def get_addr_at(address:int):
+	return int.from_bytes(get_block_at(address, address + 3), "big")
 
-seek_address_table = get_addr(0x100)  # hex 00 02 00 =  dec     512 = This is were the address table begins.
-seek_unknown       = get_addr(0x103)  # hex 1A 06 5F =  dec 1705567 = I'm not sure what this address represents.
-seek_EOF           = get_addr(0x106)  # hex 76 20 6D =  dec 7741549 = This is where the binary says the EOF is.
+seek_address_table = get_addr_at(0x100) # hex 00 02 00 =  dec     512 = This is were the address table begins.
+seek_unknown       = get_addr_at(0x103) # hex 1A 06 5F =  dec 1705567 = I'm not sure what this address represents.
+seek_EOF           = get_addr_at(0x106) # hex 76 20 6D =  dec 7741549 = This is where the binary says the EOF is.
 seek_files         = [] # initialize a list for addresses to the audio samples
 
 # The assumption here is that the first address of referenced by the address
 # table is a good indication of where the address table ends and the samples
 # begin.
 
-for pointer in range(seek_address_table, get_addr(seek_address_table), 4):
-	seek_files.append( get_addr(pointer) )
+for address in range(seek_address_table, get_addr_at(seek_address_table), 4):
+	seek_files.append( get_addr_at(address) )
 
 
 
@@ -110,24 +113,20 @@ def instantiate_dir(subdir):
 	if not os.path.exists(subdir):
 		os.mkdir(subdir)
 
-subdir_companded   = "c"
-subdir_decompanded = "d"
-
 instantiate_dir(subdir_companded  )
 instantiate_dir(subdir_decompanded)
-
 
 for index, begin in enumerate(seek_files):
 
 	if begin == 0xFFFFFF:
 		continue # the address 0xFFFFFF is a placeholder.  skip this one.
 
-	end    = get_addr(begin) # the first 3 bytes are actually the end address.
-	begin += 3               # ... so the audio actually begins after 3 bytes.
+	end    = get_addr_at(begin) # the first 3 bytes are actually the end address.
+	begin += 3                  # ... so the audio actually begins after 3 bytes.
 
 	print("\tprocessing " +  str(index).rjust(4, '0') + " (beginning at " + hex(begin) + " and ending at " +hex(end) + ")")
 
-	data = get_block(begin, end + 1) # include the data at the end address.
+	data = get_block_at(begin, end + 1) # include the data at the end address.
 	data = bytearray(b'\x80' + data + b'\x80') # wrap that data with 1 sample of zero amplitude on each side
 
 	# the bytearray is already companded, let's write that file first, then
@@ -143,6 +142,7 @@ for index, begin in enumerate(seek_files):
 	# ... and remove the raw files.
 	os.remove(output_filename(subdir_companded  , index, "raw"))
 	os.remove(output_filename(subdir_decompanded, index, "raw"))
+
 
 
 #===============================================================================
