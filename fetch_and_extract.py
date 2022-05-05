@@ -16,7 +16,6 @@ subdir_decompanded = "d"
 
 
 
-
 print("begin...")
 #===============================================================================
 # first, fetch the binary
@@ -42,15 +41,17 @@ def get_block_at(address_begin:int, address_end:int):
 def get_addr_at(address:int):
 	return int.from_bytes(get_block_at(address, address + 3), "big")
 
+# These values were correct with the binary at
+# 	http://www.scomcontrollers.com/downloads/SpLibEng_1.3.bin
+# Maybe they would change with another version, but I think it is unlikely.
 seek_address_table = get_addr_at(0x100) # hex 00 02 00 =  dec     512 = This is were the address table begins.
 seek_unknown       = get_addr_at(0x103) # hex 1A 06 5F =  dec 1705567 = I'm not sure what this address represents.
 seek_EOF           = get_addr_at(0x106) # hex 76 20 6D =  dec 7741549 = This is where the binary says the EOF is.
+
 seek_files         = [] # initialize a list for addresses to the audio samples
 
-# The assumption here is that the first address of referenced by the address
-# table is a good indication of where the address table ends and the samples
-# begin.
-
+# The assumption here is that the first address referenced by the address
+# table is a good indication of where the address table ends.
 for address in range(seek_address_table, get_addr_at(seek_address_table), 4):
 	seek_files.append( get_addr_at(address) )
 
@@ -85,9 +86,8 @@ def decompand_byte(b:int):
 			)
 		)
 
-
-# These two methods use low-level access to the bytearray... so 'data' is
-# actually being changed globally.  Also worth note is that companding and
+# These two methods below use low-level access to the bytearray... so 'data'
+# is actually being changed globally.  Also worth note is that companding and
 # decompanding is lossy.  So, we should grab the pre-companded audio before
 # we try decompanding the audio bytearray.
 
