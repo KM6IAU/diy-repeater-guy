@@ -1,7 +1,7 @@
 # DIY Repeater Guy
 This project, while perhaps not so aptly named, establishes a framework and
 toolkit to construct phrases based on the voice used on the S-COM 7330 repeater
-controller (and perhaps other SCOM repeater controllers).  The voice is that
+controller (and perhaps other S-COM repeater controllers).  The voice is that
 of professional voiceover talent, [Sean Caldwell](https://www.seancaldwell.com/).
 
 ## Prerequisites
