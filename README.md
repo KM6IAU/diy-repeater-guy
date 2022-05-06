@@ -6,6 +6,9 @@ This project is provided “as is”, without warranty of any kind, express or i
   
 This project is provided for educational purposes.  S-COM has generously publicly provided the resources upon which the project draws.  The project maintainer's goal is to respectfully contribute to the amateur radio hobby without harm to any party.
 
+## Observations and Notes
+See [NOTE.md](https://github.com/KM6IAU/diy-repeater-guy/blob/main/NOTE.md).  
+
 ## Prerequisites
 ### debian-based linux
 `sudo apt update`  
