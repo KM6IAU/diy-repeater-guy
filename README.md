@@ -7,7 +7,7 @@ of professional voiceover talent, [Sean Caldwell](https://www.seancaldwell.com/)
 ## Prerequisites
 ### debian-based linux
 `sudo apt update`  
-`sudo apt install python3 wget sox`  
+`sudo apt install git python3 wget sox`  
 
 ### windows-based windows
 You'll figure it out.  
