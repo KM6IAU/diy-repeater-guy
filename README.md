@@ -28,11 +28,11 @@ You'll figure it out.
 ### Information about [fetch_and_extract.py](https://github.com/KM6IAU/diy-repeater-guy/blob/main/fetch_and_extract.py)
 fetch_and_extract.py will first get the binary source file at http://www.scomcontrollers.com/downloads/SpLibEng_1.3.bin.
 
-Then it will create two folders:
+Then it will create two folders of wav files:
 
 - **`c`**: companded (compressed and expanded) audio, bytewise exactly as it is stored in the binary source file.   These will sound like they are clipping without de-emphasis applied.
 
-- **`d`**: the aforementioned files, except that they have been de-companded using inverse function provided at https://en.wikipedia.org/wiki/%CE%9C-law_algorithm .  These are the ones that will sound "right", in most cases.
+- **`d`**: the aforementioned files, except that they have been de-companded using the inverse function provided at https://en.wikipedia.org/wiki/%CE%9C-law_algorithm .  These are the ones that will "sound right", in most cases.
 
 Use the companded or de-companded audio files depending on if your output is considered to be pre-emphasized or not.
 
