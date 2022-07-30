@@ -3,7 +3,7 @@
 # fetch_and_extract.py
 #
 # This program will fetch the publicly available binary from SCOM's website
-# and extract the audio files in to the 2 sub-folders described in info.txt.
+# and extract the audio files in to the 2 sub-folders described in README.md.
 #
 # This program requires the following packages:
 # 	wget
