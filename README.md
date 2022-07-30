@@ -7,7 +7,7 @@ This project is provided “as is”, without warranty of any kind, express or i
 This project is provided for educational purposes.  S-COM has generously publicly provided the resources upon which the project draws.  The project maintainer's goal is to respectfully contribute to the amateur radio hobby without harm to any party.
 
 ## Observations and Notes
-[vocabulary.json](https://github.com/KM6IAU/diy-repeater-guy/blob/main/vocabulary.json) is a JSON dict based on the
+[vocabulary.json](https://github.com/KM6IAU/diy-repeater-guy/blob/main/vocabulary.json) is a JSON dict which reflects the
 vocabulary tables beginning on page 471 of the [S-COM 7330 User Manual](http://www.scomcontrollers.com/downloads/7330_UserMan_V1.8.pdf).
 
 See additional notes in [NOTE.md](https://github.com/KM6IAU/diy-repeater-guy/blob/main/NOTE.md).  
